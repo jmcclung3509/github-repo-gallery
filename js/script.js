@@ -4,6 +4,10 @@ const overview = document.querySelector(".overview");
 const username = "jmcclung3509";
 // List where repos will be displayed//
 const reposList = document.querySelector(".repo-list");
+//Section with class of "repos" where all repo info appears//
+const allRepos = document.querySelector(".repos");
+//Where individual repo data will appear//
+const indivRepoData = document.querySelector(".repo-data");
 
 const getInfo = async function () {
     const res = await fetch (`https://api.github.com/users/${username}`);
@@ -46,6 +50,43 @@ const displayRepoInfo = function (repos) {
         <h3> ${repo.name}</h3>`
         reposList.append(li);
     }
+};
 
+reposList.addEventListener ("click", function(e) {
+    if (e.target.matches("h3")) {
+        const repoName = e.target.innerText;
+        specificRepoInfo(repoName);
+    }
+});
 
+const specificRepoInfo = async function (repoName) {
+    const fetchSpecific = await fetch (`https://api.github.com/repos/${username}/${repoName}`);
+    const repoInfo = await fetchSpecific.json();
+    console.log(repoInfo);
+    const fetchLanguages = await fetch (repoInfo.languages_url);
+    const languageData = await fetchLanguages.json();
+    console.log(languageData);
+
+    const languages = [];
+    for (let language in languageData) {
+        languages.push(language);
+
+    console.log(languages);
+    }
+
+    displaySpecificRepoInfo(repoInfo, languages);
+};
+
+const displaySpecificRepoInfo = function (repoInfo, languages) {
+    indivRepoData.innerHTML = "";
+    const div = document.createElement ("div");
+    div.innerHTML = `
+        <h3>Name: ${repoInfo.name}</h3>
+            <p>Description: ${repoInfo.description}</p>
+            <p>Default Branch: ${repoInfo.default_branch}</p>
+            <p>Languages: ${languages.join(",")}</p>
+            <a class = "visit" href="${repoInfo.html_url}" target = "_blank" rel="noreferrer noopener">View Repo on GitHub!</a>`
+    indivRepoData.append(div);
+    indivRepoData.classList.remove("hide");
+    allRepos.classList.add("hide");
 };
