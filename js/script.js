@@ -1,4 +1,4 @@
-//Profile Information//
+//Profile Information
 const overview = document.querySelector(".overview");
 //Github profile name//
 const username = "jmcclung3509";
@@ -8,6 +8,10 @@ const reposList = document.querySelector(".repo-list");
 const allRepos = document.querySelector(".repos");
 //Where individual repo data will appear//
 const indivRepoData = document.querySelector(".repo-data");
+//Selects the back to repo button
+const viewReposButton = document.querySelector(".view-repos");
+//Select the input with "search by name" placeholder
+const filterInput = document.querySelector(".filter-repos");
 
 const getInfo = async function () {
     const res = await fetch (`https://api.github.com/users/${username}`);
@@ -43,6 +47,7 @@ const getRepos = async function () {
 };
 
 const displayRepoInfo = function (repos) {
+    filterInput.classList.remove("hide");
     for (const repo of repos) {
         const li = document.createElement("li");
         li.classList.add ("repo");
@@ -90,3 +95,25 @@ const displaySpecificRepoInfo = function (repoInfo, languages) {
     indivRepoData.classList.remove("hide");
     allRepos.classList.add("hide");
 };
+
+viewReposButton.addEventListener ("click", function() {
+    allRepos.classList.remove("hide");
+    indivRepoData.classList.remove("hide");
+    viewReposButton.addEventListener.add("hide");
+})
+
+filterInput.addEventListener ("input", function(e) {
+    const inputValue = e.target.value;
+    console.log(inputValue);
+    const repos = document.querySelectorAll (".repo");
+    const lowerInputValue = inputValue.toLowerCase();
+   
+    for ( const repo of repos) {
+        const lowerRepo = repo.innerText.toLowerCase();
+        if (lowerRepo.includes(lowerInputValue)) {
+            repo.classList.remove("hide");
+        } else {
+            repo.classList.add("hide");
+        } 
+    }
+});
