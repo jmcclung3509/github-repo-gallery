@@ -98,6 +98,15 @@ ul {
     max-width: 1200px;
 }
 
+.overview {
+    display: flex;
+    justify-content: space-between;
+}
+
+/* .paragraph-container {
+    width: 60%;
+} */
+
 .intro,
 .repos {
     width: 100%;
@@ -110,7 +119,7 @@ ul {
     background-color: #483978;
     color: white;
     font-size: 18px;
-    padding-bottom: 2em;
+    padding: 2em 0;
 }
 
 .user-info figure {
@@ -135,7 +144,7 @@ ul {
     width: 100%;
     margin: 0;
     padding: 0;
-    border-bottom: 1px solid #9b8dc9;
+    /* border-bottom: 1px solid #9b8dc9; */
     padding-bottom: 19px;
 }
 
