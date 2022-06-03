@@ -84,16 +84,15 @@ const specificRepoInfo = async function (repoName) {
 
 const displaySpecificRepoInfo = function (repoInfo, languages) {
     indivRepoData.innerHTML = "";
-    const div1 = document.createElement("div");
-    div1.className.add("paragraph-container")
-    div1.innerHTML = `
+    const div = document.createElement("div");
+    div.innerHTML = `
         <h3>Name: ${repoInfo.name}</h3>
             <p>Description: ${repoInfo.description}</p>
             <p>Default Branch: ${repoInfo.default_branch}</p>
             <p>Languages: ${languages.join(",")}</p>
             <a class = "visit" href="${repoInfo.html_url}" target = "_blank" rel="noreferrer noopener">View Repo on GitHub!</a>`
 
-    indivRepoData.append(div1);
+    indivRepoData.append(div);
     indivRepoData.classList.remove("hide");
     allRepos.classList.add("hide");
 };
