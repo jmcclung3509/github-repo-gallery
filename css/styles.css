@@ -14,7 +14,7 @@ body {
 }
 
 .hide {
-    /* '!important' is to make sure that when we add the class using JS, it takes precendence */
+
     display: none !important;
 }
 
@@ -148,16 +148,26 @@ ul {
     padding-bottom: 19px;
 }
 
+.user-span {
+    margin-left: 10px;
+    font-size: 1rem;
+}
+
+.userdiv-paragraph strong {
+    color: #E6D967;
+}
+
 .filter-repos {
     width: 300px;
     margin-top: 1em;
     padding: 1em;
     margin-bottom: 1em;
     border: 2px solid #483978;
+    border-radius: 4px;
 }
 
 section.repo-data {
-    background-color: #fff;
+    background-color: #fbf9de;
     padding: 2em;
     padding-bottom: 1em;
 }
@@ -166,7 +176,7 @@ section.repo-data {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    background-color: #fff;
+    background-color: white;
     margin-top: 0;
     padding: 2em;
 }
@@ -184,10 +194,15 @@ section.repo-data {
     margin: 1em 0;
     border: 1px solid #f86d58;
     padding: 0.5em;
+    background-color: white;
+    border-radius: 4px;
+
 }
 
+
+
 .repo-list h3 {
-    text-align: left;
+    text-align: center;
     margin: 0;
     padding: 10px;
 }
@@ -195,6 +210,7 @@ section.repo-data {
 .repo-list h3:hover {
     background-color: #eee9ff;
     cursor: pointer;
+
 }
 
 .repo-list p {
@@ -220,6 +236,7 @@ section.repo-data {
     display: block;
     background-color: #483978;
     border: 1px solid #483978;
+    border-radius: 4px;
 }
 
 .repo-data .visit:hover {
@@ -229,7 +246,7 @@ section.repo-data {
 
 .button-container {
     width: 100%;
-    background-color: #fff;
+    background-color: transparent;
     padding-left: 2em;
     padding-bottom: 2em;
 }
@@ -237,6 +254,12 @@ section.repo-data {
 .view-repos {
     max-width: 200px;
     margin-top: 0;
+    border-radius: 4px;
+    background-color: #ffffff;
+    color: #483978;
+    outline: none;
+    border: 1px solid #483978;
+    padding: 0.75em;
 }
 
 @media (min-width: 700px) {

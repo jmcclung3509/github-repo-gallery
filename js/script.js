@@ -1,16 +1,16 @@
-//Profile Information
+
 const overview = document.querySelector(".overview");
-//Github profile name//
+
 const username = "jmcclung3509";
-// List where repos will be displayed//
+
 const reposList = document.querySelector(".repo-list");
-//Section with class of "repos" where all repo info appears//
+
 const allRepos = document.querySelector(".repos");
-//Where individual repo data will appear//
+
 const indivRepoData = document.querySelector(".repo-data");
-//Selects the back to repo button
+
 const viewReposButton = document.querySelector(".view-repos");
-//Select the input with "search by name" placeholder
+
 const filterInput = document.querySelector(".filter-repos");
 
 const getInfo = async function () {
@@ -29,10 +29,10 @@ const displayUserInfo = function (data) {
         <img alt = "user avatar" src = ${data.avatar_url} />
     </figure>
     <div class="userdiv-paragraph">
-        <p><strong>Name:</strong> ${data.name}</p>
-        <p><strong>Bio:</strong> ${data.bio}</p>
-        <p><strong>Location:</strong> ${data.location}</p>
-        <p><strong> Number of public repos</strong> ${data.public_repos}</p>
+        <p><strong>Name: </strong> <span class = "user-span">${data.name}</span></p>
+        <p><strong>Bio: </strong> <span class = "user-span">${data.bio}</span></p>
+        <p><strong>Location: </strong> <span class = "user-span">${data.location}</span></p>
+        <p><strong> Number of public repos: </strong><span class = "user-span"> ${data.public_repos}</span></p>
     </div>
     `
     overview.append(userDiv);
@@ -95,6 +95,7 @@ const displaySpecificRepoInfo = function (repoInfo, languages) {
     indivRepoData.append(div);
     indivRepoData.classList.remove("hide");
     allRepos.classList.add("hide");
+    viewReposButton.classList.remove("hide")
 };
 
 viewReposButton.addEventListener("click", function () {
